@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIMIT TWEAKS | Gaming Performance</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#168cff;--cyan:#00d9ff;--text:#f4f8ff;--muted:#c1d1ea}
+html{scroll-behavior:smooth}
+body{background:#050914;color:var(--text);font-family:Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+main{flex:1}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+header{position:sticky;top:0;z-index:10;background:#070d1c;border-bottom:1px solid var(--blue);box-shadow:0 0 18px #087cff40}
+nav{max-width:1200px;margin:auto;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font-size:25px;font-weight:900;font-style:italic;letter-spacing:-1px}
+.logo span,h1 span,h2 span{color:var(--blue)}
+.logo span{text-shadow:0 0 15px var(--blue)}
+.nav-links{display:flex;gap:22px;flex-wrap:wrap}
+.nav-links a{color:#d3e2fa;padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+.nav-links a:hover,.nav-links a.on{color:var(--cyan);border-color:var(--cyan)}
+.view{display:none}.view.on{display:block}
+.hero{padding:60px 20px;text-align:center;background:radial-gradient(ellipse at 50% 40%,#073f8d 0%,#071a3d 35%,#050914 75%);border-bottom:1px solid var(--blue)}
+.hero-in{max-width:820px;margin:auto}
+.tag{display:inline-block;padding:8px 14px;border:1px solid var(--blue);border-radius:30px;color:var(--cyan);font-size:12px;letter-spacing:2px;margin-bottom:20px}
+h1{font-size:clamp(42px,8vw,78px);font-weight:900;font-style:italic;line-height:1.05;text-shadow:0 0 25px #168cff80}
+.hero p{color:var(--muted);margin:18px 0 26px;font-size:18px;line-height:1.6}
+.button{display:inline-block;padding:14px 25px;border-radius:8px;background:var(--blue);color:#fff;font-weight:bold;border:1px solid var(--cyan);box-shadow:0 0 18px #168cff60;transition:.2s;cursor:pointer;font-size:15px}
+.button:hover{background:#0872e8;box-shadow:0 0 28px #168cffb0}
+.section{max-width:1200px;margin:auto;padding:55px 20px}
+.narrow{max-width:820px}
+.head{text-align:center;margin-bottom:32px}
+h2{font-size:30px;margin-bottom:10px}
+.head p{color:#a9bbd6;line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.card,.info,.step,details,.warn{background:linear-gradient(145deg,#101e36,#080f20);border:1px solid #174f88;border-radius:12px}
+.card{padding:26px;display:block;transition:.25s}
+.card:hover{border-color:var(--cyan);box-shadow:0 0 22px #168cff35}
+.icon{font-size:35px;margin-bottom:16px}
+h3{font-size:20px;margin-bottom:10px}
+.card p,.info p{color:#b4c5de;line-height:1.7;margin-bottom:18px}
+.link{color:var(--cyan);font-weight:bold}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
+.info{padding:25px}.info h3{color:var(--cyan)}
+.back{display:inline-block;color:var(--cyan);font-weight:bold;margin-bottom:22px}
+.warn{padding:18px 22px;margin:22px 0;border-color:#c98b1a;background:#1a1405;color:#ffe3a3;line-height:1.6}
+.step{padding:20px 22px;margin-bottom:14px}
+.step h3{font-size:17px;color:var(--cyan)}
+.step p{color:#c1d1ea;line-height:1.7}
+.step b{color:#fff}
+details{padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:bold;font-size:17px}
+details p{color:#c1d1ea;line-height:1.7;margin-top:12px}
+ul.soon{list-style:none;margin:0 0 6px}
+ul.soon li{padding:10px 0;border-bottom:1px solid #174f88;color:#c1d1ea}
+.badge{float:right;color:var(--cyan);font-size:13px;font-weight:bold}
+footer{border-top:1px solid #174f88;background:#070d1c;padding:28px 20px;text-align:center;color:#9bb2d2;line-height:1.9}
+footer strong{color:var(--blue)}
+@media(max-width:750px){nav{flex-direction:column}.nav-links{justify-content:center;gap:16px;font-size:14px}.cards,.panel{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><nav>
+<a href="#home" class="logo">LIMIT <span>TWEAKS</span></a>
+<div class="nav-links" id="nav">
+<a href="#home" data-v="home">Home</a><a href="#guides" data-v="guides">Guides</a><a href="#downloads" data-v="downloads">Downloads</a><a href="#faq" data-v="faq">FAQ</a>
+</div></nav></header>
+
+<main>
+<div class="view" id="v-home">
+<section class="hero"><div class="hero-in">
+<div class="tag">GAMING PERFORMANCE HUB</div>
+<h1>LIMIT <span>TWEAKS</span></h1>
+<p>Optimize your PC. Improve your settings. Get ready for your next game.</p>
+<a href="#guides" class="button">Explore Guides →</a>
+</div></section>
+<section class="section">
+<div class="head"><h2>FEATURED <span>GUIDES</span></h2><p>Simple guides to help you get more out of your gaming PC.</p></div>
+<div class="cards" id="homeCards"></div>
+<div class="panel">
+<div class="info"><h3>📥 Downloads &amp; Resources</h3><p>See what’s planned and get notified of new tools as they are added.</p><a class="link" href="#downloads">See what’s coming →</a></div>
+<div class="info"><h3>❓ Frequently Asked Questions</h3><p>New to PC optimization? Start with safe, simple changes and always create a restore point first.</p><a class="link" href="#faq">Read the FAQ →</a></div>
+</div></section></div>
+
+<div class="view" id="v-guides"><section class="section">
+<div class="head"><h2>ALL <span>GUIDES</span></h2><p>Pick a guide. Every guide starts with how to undo your changes.</p></div>
+<div class="cards" id="guideCards"></div></section></div>
+
+<div class="view" id="v-guide"><section class="section narrow" id="guideBody"></section></div>
+
+<div class="view" id="v-downloads"><section class="section narrow">
+<div class="head"><h2>DOWNLOADS &amp; <span>RESOURCES</span></h2><p>Nothing to download yet. Planned for this page:</p></div>
+<div class="info"><ul class="soon">
+<li>Printable before-and-after benchmark sheet <span class="badge">COMING SOON</span></li>
+<li>Startup apps checklist <span class="badge">COMING SOON</span></li>
+<li>Links to trusted driver pages <span class="badge">COMING SOON</span></li>
+</ul>
+<p style="margin-top:16px">Only download tools from the maker’s official site, and never run a “one-click optimizer” you can’t verify.</p></div>
+</section></div>
+
+<div class="view" id="v-faq"><section class="section narrow">
+<div class="head"><h2>FREQUENTLY ASKED <span>QUESTIONS</span></h2><p>Start here if you’re new to PC optimization.</p></div>
+<details><summary>Are these tweaks safe?</summary><p>The guides only use settings built into Windows and your games, and each one explains how to reverse it. Create a restore point first anyway.</p></details>
+<details><summary>How do I create a restore point?</summary><p>Search “Create a restore point” in the Start menu, open System Protection, select your Windows drive, click Configure to turn protection on if needed, then click Create and give it a name.</p></details>
+<details><summary>Do I need to install any tools?</summary><p>No. Everything in the guides can be done from Windows Settings, Task Manager, and your games’ menus.</p></details>
+<details><summary>Why didn’t my FPS change?</summary><p>Many tweaks help only when that setting is the bottleneck. Measure before and after, keep the changes that help, and undo the ones that don’t.</p></details>
+<details><summary>Should I trust “one-click” optimizer programs?</summary><p>Be careful. They change many settings at once, so you can’t tell what helped or how to undo it. Making changes one at a time is safer.</p></details>
+</section></div>
+</main>
+
+<footer><strong>LIMIT TWEAKS</strong><p>Gaming performance guides for everyone.</p><p>© 2026 LIMIT TWEAKS</p></footer>
+
+<script>
+var G={
+pc:{icon:'⚡',title:'PC Optimization',desc:'Learn about performance settings, background apps, and ways to keep your PC running smoothly.',steps:[
+['Update your graphics driver','Download the latest driver from NVIDIA, AMD, or Intel’s official site. New drivers often improve performance in recent games.'],
+['Trim startup apps','Press <b>Ctrl+Shift+Esc</b>, open <b>Startup apps</b>, and disable programs you don’t need at boot. Leave security software and drivers alone.'],
+['Set a performance power mode','Open <b>Settings → System → Power &amp; battery</b> and set <b>Power mode</b> to <b>Best performance</b>. On laptops, plug in while gaming.'],
+['Close background apps before gaming','Browsers, launchers, and video players use memory and CPU. Close what you don’t need, and check Task Manager if a game stutters.'],
+['Keep free space on your drive','Aim to keep at least 15–20% of your game drive free. Use <b>Settings → System → Storage</b> to find large files.'],
+['Watch your temperatures','Dust and heat cause slowdowns. Clean fans and vents, and keep airflow clear around your PC.']]},
+windows:{icon:'🖥️',title:'Windows Tweaks',desc:'Discover useful Windows settings and learn what each change does before using it.',steps:[
+['Turn on Game Mode','<b>Settings → Gaming → Game Mode → On.</b> Windows then prioritizes your game and limits background tasks. To undo, switch it off.'],
+['Try hardware-accelerated GPU scheduling','<b>Settings → System → Display → Graphics → Default graphics settings.</b> Turn it on, restart, and test. Turn it off if you see no gain or new problems.'],
+['Turn off game recording you don’t use','In <b>Settings → Gaming → Captures</b>, turn off background recording if you don’t clip gameplay. This frees up some resources.'],
+['Adjust visual effects','Press <b>Win+R</b>, type <b>sysdm.cpl</b>, open <b>Advanced → Performance Settings</b>, and choose <b>Adjust for best performance</b> or pick effects yourself. This affects looks, not game graphics.'],
+['Set your monitor’s refresh rate','<b>Settings → System → Display → Advanced display.</b> Make sure the refresh rate matches what your monitor supports.']]},
+game:{icon:'🎮',title:'Game Settings',desc:'Learn about graphics options, display settings, and controls for your favorite games.',steps:[
+['Use your monitor’s native resolution','Running below native looks blurry. If you need more FPS, use the game’s upscaling option instead.'],
+['Try DLSS, FSR, or XeSS','If your game offers upscaling, set it to <b>Quality</b> first. Move to <b>Balanced</b> only if you need more frames.'],
+['Lower the settings that cost the most','Shadows, volumetric effects, and ray tracing usually cost the most FPS. Lower these before textures.'],
+['Match textures to your VRAM','High textures are fine if your graphics card has enough memory. If you see stutter, lower texture quality one step.'],
+['Cap your frame rate','A cap just under your monitor’s refresh rate gives smoother, more consistent play and runs cooler.'],
+['Test before and after','Play the same scene for a minute before and after each change. Keep only the changes that help.']]}
+};
+function cards(el){el.innerHTML=Object.keys(G).map(function(k){var g=G[k];return '<a class="card" href="#'+k+'"><div class="icon">'+g.icon+'</div><h3>'+g.title+'</h3><p>'+g.desc+'</p><span class="link">View Guide →</span></a>'}).join('')}
+cards(document.getElementById('homeCards'));cards(document.getElementById('guideCards'));
+function route(){
+var id=location.hash.slice(1)||'home',v=id;
+document.querySelectorAll('.view').forEach(function(e){e.classList.remove('on')});
+if(G[id]){var g=G[id];v='guide';
+document.getElementById('guideBody').innerHTML='<a class="back" href="#guides">← All guides</a><h2>'+g.icon+' '+g.title+'</h2><p style="color:#a9bbd6;line-height:1.6">'+g.desc+'</p><div class="warn"><b>Before you start:</b> create a restore point. Search “Create a restore point” in the Start menu. Change one setting at a time and test after each.</div>'+g.steps.map(function(s){return '<div class="step"><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join('');
+}else if(!document.getElementById('v-'+id)){v=id='home'}
+document.getElementById('v-'+v).classList.add('on');
+var nv=G[id]?'guides':id;
+document.querySelectorAll('#nav a').forEach(function(a){a.classList.toggle('on',a.dataset.v===nv)});
+window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);route();
+</script>
+<script>
+(function () {
+  var L = window.lt;
+  var css = document.createElement('style');
+  css.textContent = '.tw{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 22px;margin-bottom:14px}.tw h3{font-size:17px;margin-bottom:6px;color:#fff}.tw p{color:#b4c5de;line-height:1.6;margin:0}.tw small{color:#ffe3a3;display:block;margin-top:6px}.sw{position:relative;width:54px;height:30px;flex:none}.sw input{opacity:0;width:100%;height:100%;position:absolute;margin:0;cursor:pointer;z-index:1}.sw i{position:absolute;inset:0;border-radius:30px;background:#26364f;transition:.2s}.sw i:after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}.sw input:checked+i{background:#168cff}.sw input:checked+i:after{left:27px}.sw input:focus-visible+i{outline:2px solid #00d9ff;outline-offset:3px}#log{height:380px;overflow:auto;padding:16px;margin-bottom:14px}.m{max-width:85%;padding:10px 14px;margin-bottom:10px;border-radius:10px;line-height:1.6;white-space:pre-wrap}.m.u{margin-left:auto;background:#0f4c9a}.m.a{background:#101e36;border:1px solid #174f88}.row{display:flex;gap:10px}.row input{flex:1;padding:12px;border-radius:8px;border:1px solid #174f88;background:#0b1528;color:#fff;font-size:15px}#status{color:#ffe3a3;margin:12px 0;min-height:20px}';
+  document.head.appendChild(css);
+
+  var nav = document.getElementById('nav'), main = document.querySelector('main');
+  [['tweaks', 'Tweaks'], ['chat', 'AI Chat']].forEach(function (p) {
+    var a = document.createElement('a');
+    a.href = '#' + p[0]; a.dataset.v = p[0]; a.textContent = p[1];
+    nav.appendChild(a);
+  });
+  function view(id, html) {
+    var d = document.createElement('div');
+    d.className = 'view'; d.id = 'v-' + id; d.innerHTML = html;
+    main.appendChild(d); return d;
+  }
+
+  var tv = view('tweaks', '<section class="section narrow"><div class="head"><h2>YOUR <span>TWEAKS</span></h2><p>Switch each one on or off. Off always means the Windows default.</p></div><div id="tl"></div><div id="status" role="status"></div><button class="button" id="rs">Reset all to Windows defaults</button></section>');
+  var tl = tv.querySelector('#tl'), st = tv.querySelector('#status');
+
+  function load() {
+    if (!L) { tl.innerHTML = '<div class="info"><p>Tweaks only work in the Limit Tweaks desktop app. Open the app folder in a terminal and run <b>npm start</b>.</p></div>'; return; }
+    L.list().then(function (a) {
+      tl.innerHTML = '';
+      if (!a.length) { tl.innerHTML = '<div class="info"><p>Tweaks need Windows.</p></div>'; return; }
+      a.forEach(function (t) {
+        var row = document.createElement('div'); row.className = 'card tw';
+        var txt = document.createElement('div');
+        var h = document.createElement('h3'); h.textContent = t.name;
+        var p = document.createElement('p'); p.textContent = t.desc;
+        txt.appendChild(h); txt.appendChild(p);
+        if (t.note) { var n = document.createElement('small'); n.textContent = t.note; txt.appendChild(n); }
+        var lab = document.createElement('label'); lab.className = 'sw';
+        var inp = document.createElement('input'); inp.type = 'checkbox'; inp.checked = t.on;
+        inp.setAttribute('aria-label', t.name);
+        var i = document.createElement('i');
+        lab.appendChild(inp); lab.appendChild(i);
+        inp.onchange = function () {
+          var want = inp.checked;
+          L.set(t.id, want).then(function (r) {
+            if (!r.ok) { inp.checked = !want; st.textContent = 'Could not change this: ' + r.err; }
+            else st.textContent = t.name + (want ? ': on.' : ': off (Windows default).');
+          });
+        };
+        row.appendChild(txt); row.appendChild(lab); tl.appendChild(row);
+      });
+    });
+  }
+  tv.querySelector('#rs').onclick = function () {
+    if (!L) return;
+    L.reset().then(function () { st.textContent = 'All tweaks are back to Windows defaults.'; load(); });
+  };
+
+  var cv = view('chat', '<section class="section narrow"><div class="head"><h2>AI <span>CHAT</span></h2><p>Ask about your PC, Windows settings, or in-game settings.</p></div><div class="info" id="kp" style="display:none;margin-bottom:16px"><p>To chat, paste your Anthropic API key. It is stored encrypted on this PC and only sent to Anthropic. Chats use your own API credits.</p><div class="row"><input id="ki" type="password" placeholder="sk-ant-..." aria-label="API key"><button class="button" id="ks">Save key</button></div></div><div class="info" id="log" aria-live="polite"></div><div class="row"><input id="ci" placeholder="Ask a question..." aria-label="Message"><button class="button" id="cs">Send</button></div></section>');
+  var log = cv.querySelector('#log'), ci = cv.querySelector('#ci'), cs = cv.querySelector('#cs'), kp = cv.querySelector('#kp'), hist = [];
+  function add(role, text) {
+    var d = document.createElement('div'); d.className = 'm ' + role; d.textContent = text;
+    log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+  }
+  add('a', 'Hi! Ask me anything about getting more performance from your gaming PC.');
+  if (L) L.hasKey().then(function (h) { kp.style.display = h ? 'none' : 'block'; });
+  cv.querySelector('#ks').onclick = function () {
+    if (!L) return;
+    var ki = cv.querySelector('#ki');
+    L.setKey(ki.value).then(function (r) {
+      if (r.ok) { ki.value = ''; kp.style.display = 'none'; add('a', 'Key saved. You can start chatting.'); }
+      else add('a', 'Could not save the key: ' + r.err);
+    });
+  };
+  function send() {
+    var text = ci.value.trim();
+    if (!text) return;
+    if (!L) { add('a', 'Chat only works in the Limit Tweaks desktop app.'); return; }
+    add('u', text); hist.push({ role: 'user', content: text }); ci.value = ''; cs.disabled = true;
+    var wait = add('a', 'Thinking...');
+    L.chat(hist).then(function (r) {
+      if (r.err) { wait.textContent = 'Error: ' + r.err; hist.pop(); }
+      else { wait.textContent = r.text; hist.push({ role: 'assistant', content: r.text }); }
+      cs.disabled = false; log.scrollTop = log.scrollHeight;
+    });
+  }
+  cs.onclick = send;
+  ci.onkeydown = function (e) { if (e.key === 'Enter') send(); };
+
+  window.addEventListener('hashchange', function () { if (location.hash === '#tweaks') load(); });
+  window.dispatchEvent(new Event('hashchange'));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "limit-tweaks",
+  "productName": "Limit Tweaks",
+  "version": "1.0.0",
+  "description": "Gaming performance guides for everyone.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.limittweaks.app",
+    "files": ["index.html", "main.js", "preload.js"],
+    "win": { "target": "nsis" }
+  }
+}
